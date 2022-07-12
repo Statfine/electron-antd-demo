@@ -11,6 +11,11 @@ import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
 import checkNodeEnv from '../scripts/check-node-env';
 
+const paletteLess = fs.readFileSync(
+  path.join(__dirname, '../../src/renderer/style/antd-theme.json'),
+  'utf8'
+);
+
 // When an ESLint server is running, we can't set the NODE_ENV so we'll check if it's
 // at the dev webpack config is not accidentally run in a production environment
 if (process.env.NODE_ENV === 'production') {
@@ -63,6 +68,23 @@ const configuration: webpack.Configuration = {
 
   module: {
     rules: [
+      {
+        test: /\.less$/i,
+        use: [
+          // compiles Less to CSS
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                modifyVars: JSON.parse(paletteLess),
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
       {
         test: /\.s?css$/,
         use: [

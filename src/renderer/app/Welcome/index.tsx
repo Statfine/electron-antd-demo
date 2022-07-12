@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 import icon from '../../../../assets/icon.png';
-import '../../App.css';
+
+import * as Styled from './style';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -9,27 +10,29 @@ const Welcome = () => {
   const handleJump = () => navigate('/dashboard');
 
   return (
-    <div>
-      <div className="Hello">
+    <Styled.Container>
+      <Styled.Content>
         <img width="200px" alt="icon" src={icon} />
-      </div>
-      <h1>Hello </h1>
-      <div className="Hello">
+      </Styled.Content>
+      <h1>Hello Word</h1>
+      <Styled.Content>
         <a
           href="https://electron-react-boilerplate.js.org/"
           target="_blank"
           rel="noreferrer"
         >
-          <button type="button">
+          <Styled.Btn type="button">
             <span role="img" aria-label="books">
               📚
             </span>
             Read our docs
-          </button>
+          </Styled.Btn>
         </a>
-        <p onClick={handleJump}>Dashboard</p>
-      </div>
-    </div>
+        <Styled.Btn type="button" onClick={handleJump}>
+          Dashboard
+        </Styled.Btn>
+      </Styled.Content>
+    </Styled.Container>
   );
 };
 

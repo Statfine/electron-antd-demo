@@ -3,6 +3,7 @@
  */
 
 import path from 'path';
+import fs from 'fs';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -17,6 +18,11 @@ import deleteSourceMaps from '../scripts/delete-source-maps';
 
 checkNodeEnv('production');
 deleteSourceMaps();
+
+const paletteLess = fs.readFileSync(
+  path.join(__dirname, '../../src/renderer/style/antd-theme.json'),
+  'utf8'
+);
 
 const configuration: webpack.Configuration = {
   devtool: 'source-map',
@@ -38,6 +44,23 @@ const configuration: webpack.Configuration = {
 
   module: {
     rules: [
+      {
+        test: /\.less$/i,
+        use: [
+          // compiles Less to CSS
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                modifyVars: JSON.parse(paletteLess),
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
       {
         test: /\.s?(a|c)ss$/,
         use: [
