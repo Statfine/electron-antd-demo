@@ -112,6 +112,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@ant-design/pro-components": "^1.1.9",
     "antd": "^4.21.6",
     "dayjs": "^1.11.3",
     "electron-debug": "^3.2.0",
