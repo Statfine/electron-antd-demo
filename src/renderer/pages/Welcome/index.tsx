@@ -1,39 +1,33 @@
-import { useNavigate } from 'react-router-dom';
+import { Card } from 'antd';
 
 import icon from '../../../../assets/icon.png';
 
-import * as Styled from './style';
-
-const Welcome = () => {
-  const navigate = useNavigate();
-
-  const handleJump = () => navigate('/dashboard');
-
+const Home = () => {
   return (
-    <Styled.Container>
-      <Styled.Content>
-        <img width="200px" alt="icon" src={icon} />
-      </Styled.Content>
-      <h1>Hello Word</h1>
-      <Styled.Content>
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Styled.Btn type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </Styled.Btn>
-        </a>
-        <Styled.Btn type="button" onClick={handleJump}>
-          Dashboard
-        </Styled.Btn>
-      </Styled.Content>
-    </Styled.Container>
+    <Card style={{ padding: '100px', background: 'transparent' }}>
+      <img
+        src={icon}
+        style={{
+          maxWidth: '160px',
+          width: '100%',
+          height: 'auto',
+          margin: 'auto',
+          display: 'block',
+        }}
+        alt="logo"
+      />
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: 20,
+          fontWeight: 'bolder',
+          marginTop: 20,
+        }}
+      >
+        欢迎使用我的系统
+      </p>
+    </Card>
   );
 };
 
-export default Welcome;
+export default Home;
