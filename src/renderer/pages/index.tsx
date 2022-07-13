@@ -1,9 +1,9 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 
 import WelcomePage from './Welcome';
-import DashboardPage from './Dashboard';
-import ListPage from './Dashboard/List';
-import UserPage from './Dashboard/User';
+import { DashboardPage } from './Dashboard/Loadable';
+import { ListPage } from './Dashboard/List/Loadable';
+import { UserPage } from './Dashboard/User/Loadable';
 
 export default function App() {
   return (

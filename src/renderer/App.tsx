@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 
 import 'antd/dist/antd.less'; // antd样式
-import App from './app/index';
+import App from './pages/index';
 
 import GlobalStyle from './style/globalStyle'; // 全局样式
 

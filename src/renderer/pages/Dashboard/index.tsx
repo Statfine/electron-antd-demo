@@ -15,7 +15,7 @@ import {
 
 import icon from '../../../../assets/icon.png';
 
-const Dashboard = memo(() => {
+export const Dashboard = memo(() => {
   const navigate = useNavigate();
   const [pathname, setPathname] = useState('/');
   const [collapsed, setCollapsed] = useState(true);
@@ -112,5 +112,3 @@ const Dashboard = memo(() => {
     </div>
   );
 });
-
-export default Dashboard;
